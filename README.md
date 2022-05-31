@@ -1,7 +1,7 @@
 # GitDiscloser
 Python recon tool for Github information disclosure research
 
-Install:
+<h1>Install:</h1>
 
 $ git clone https://github.com/mathis2001/GitDiscloser
 
@@ -23,7 +23,7 @@ Usage:
 
 -u search for urls in files (useful to get a larger attack surface)
 
-Configuration:
+<h1>Configuration:</h1>
 
 In your Github account, clic on your profile in the top right of the page.
 
@@ -36,6 +36,6 @@ Give a name to your token, select only the public_repo access and clic on "Gener
 
 You can now copy your token and paste it in the api.cfg file.
 
-Some screens:
+<h1>Some screens:</h1>
 
 ![image](https://user-images.githubusercontent.com/40497633/171193566-e9b6b4cb-33f2-4833-91db-1487ec5366e5.png)
