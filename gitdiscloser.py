@@ -24,7 +24,6 @@ def help():
   -------------------------------------------
 	-h   help
 	-t   target
-	-o   output file
 	-u   search for urls in code
 	-k   search for keyword
   -------------------------------------------
