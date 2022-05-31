@@ -13,7 +13,7 @@ Usage:
 
 ./gitdiscloser.py [-h] [-s github search] [-k keyword] [-u]
 
-options:
+<h1>options:</h1>
 
 -h help
 
