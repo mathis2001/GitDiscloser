@@ -27,6 +27,10 @@ def help():
 	-u   search for urls in code
 	-k   search for keyword
   -------------------------------------------
+  Config
+
+        Simply put your github token in the api.cfg file. 
+
 	''')
 
 def getopts(argv):
