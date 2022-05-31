@@ -23,7 +23,7 @@ def help():
   Options
   -------------------------------------------
 	-h   help
-	-t   target
+	-s   search request
 	-u   search for urls in code
 	-k   search for keyword
   -------------------------------------------
@@ -37,7 +37,7 @@ def getopts(argv):
 				opts[argv[0]] = argv[1] 
 		except:
 			if argv[0] == '-h':
-				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./main.py [-h] -t target.com [-u] [-k] [-o output file]")
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./gitdiscloser.py [-h] [-s github search] [-u] [-k]")
 				help()
 				sys.exit(0)
 		argv = argv[1:] 
@@ -47,7 +47,7 @@ def main():
 	myargs = getopts(argv)
 	if len(sys.argv) < 2:
 		print(bcolors.FAIL+"[!] "+bcolors.RESET+"No target given.")
-		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./cert4recon.py [-h] -t target.com [-o output file] [-a]")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./gitdiscloser.py [-h] [-s github search] [-u] [-k]")
 		sys.exit(0)
 	rate_limit = token.get_rate_limit()
 	rate = rate_limit.search
@@ -56,7 +56,7 @@ def main():
 	else:
 		print(f'You have {rate.remaining}/{rate.limit} API calls remaining.')
 	
-	if '-t' in myargs:
+	if '-s' in myargs:
 		query = myargs['-t']
 	result = token.search_code(query, order='desc')
 
