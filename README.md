@@ -36,6 +36,12 @@ Give a name to your token, select only the public_repo access and clic on "Gener
 
 You can now copy your token and paste it in the api.cfg file.
 
-<h1>Some screens:</h1>
+## Some screens:
 
 ![image](https://user-images.githubusercontent.com/40497633/171193566-e9b6b4cb-33f2-4833-91db-1487ec5366e5.png)
+
+![test](https://user-images.githubusercontent.com/40497633/171198846-f6cf1d46-87e9-4297-9b10-d47ac858f4a7.png)
+
+![test](https://user-images.githubusercontent.com/40497633/171198551-7a38fa0a-2ec8-47e5-9641-9737b3706903.png)
+
+
