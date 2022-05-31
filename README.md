@@ -10,11 +10,11 @@ $ cd GitDiscloser
 $ python3 gitdiscloser.py
 ```
 ### Usage:
-
+```bash
 ./gitdiscloser.py [-h] [-s github search] [-k keyword] [-u]
-
+```
 ### options:
-
+```bash
 -h help
 
 -s github search (you can only put target.com or use dorks like "language:python target.com")
@@ -22,7 +22,7 @@ $ python3 gitdiscloser.py
 -k search for a specific keyword (passwd, password, token, api_token, secret, private, ldap...)
 
 -u search for urls in files (useful to get a larger attack surface)
-
+```
 ### Configuration:
 
 In your Github account, clic on your profile in the top right of the page.
