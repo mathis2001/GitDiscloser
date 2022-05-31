@@ -35,3 +35,5 @@ Give a name to your token, select only the public_repo access and clic on "Gener
 
 
 You can now copy your token and paste it in the api.cfg file.
+
+#Some screens
