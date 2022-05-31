@@ -1,7 +1,7 @@
 # GitDiscloser
 Python recon tool for Github information disclosure research
 
-### Install:
+## Install:
 ```bash
 $ git clone https://github.com/mathis2001/GitDiscloser
 
@@ -9,11 +9,11 @@ $ cd GitDiscloser
 
 $ python3 gitdiscloser.py
 ```
-### Usage:
+## Usage:
 ```bash
 ./gitdiscloser.py [-h] [-s github search] [-k keyword] [-u]
 ```
-### options:
+## options:
 ```bash
 -h help
 
@@ -23,7 +23,7 @@ $ python3 gitdiscloser.py
 
 -u search for urls in files (useful to get a larger attack surface)
 ```
-### Configuration:
+## Configuration:
 
 In your Github account, clic on your profile in the top right of the page.
 
