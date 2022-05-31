@@ -61,7 +61,7 @@ def main():
 		print(f'You have {rate.remaining}/{rate.limit} API calls remaining.')
 	
 	if '-s' in myargs:
-		query = myargs['-t']
+		query = myargs['-s']
 	result = token.search_code(query, order='desc')
 
 	max_size = 100
