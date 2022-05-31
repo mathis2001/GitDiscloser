@@ -2,18 +2,18 @@
 Python recon tool for Github information disclosure research
 
 ### Install:
-
+```bash
 $ git clone https://github.com/mathis2001/GitDiscloser
 
 $ cd GitDiscloser
 
 $ python3 gitdiscloser.py
-
+```
 ### Usage:
 
 ./gitdiscloser.py [-h] [-s github search] [-k keyword] [-u]
 
-<h1>options:</h1>
+### options:
 
 -h help
 
