@@ -31,6 +31,7 @@ Then go to settings > Developer settings > personal access tokens > Generate a n
 
 Give a name to your token, select only the public_repo access and clic on "Generate token".
 
-You can now copy your token and paste it in the api.cfg file.
+![image](https://user-images.githubusercontent.com/40497633/171192364-aa66b523-cb2f-40e4-bcf2-8b007a1ad682.png)
 
-![image](https://user-images.githubusercontent.com/40497633/171192156-1f76f642-2d13-4226-bd4b-63def95aa2b0.png)
+
+You can now copy your token and paste it in the api.cfg file.
