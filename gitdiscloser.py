@@ -43,7 +43,7 @@ def getopts(argv):
 				opts[argv[0]] = argv[1] 
 		except:
 			if argv[0] == '-h':
-				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-u] [-k keyword]")
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-k keyword] [-u] [-n]")
 				help()
 				sys.exit(0)
 		argv = argv[1:] 
@@ -53,7 +53,7 @@ def main():
 	myargs = getopts(argv)
 	if len(sys.argv) < 2:
 		print(bcolors.FAIL+"[!] "+bcolors.RESET+"No target given.")
-		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-u] [-k keyword]")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-k keyword] [-u] [-n]")
 		sys.exit(0)
 	rate_limit = token.get_rate_limit()
 	rate = rate_limit.search
