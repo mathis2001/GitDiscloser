@@ -26,6 +26,7 @@ def help():
 	-s   search request
 	-u   search for urls in code
 	-f   find word matches with a wordlist
+	-n   sort by the more recently indexed
 	-k   search for keyword
   ----------------------------------------------
   Config
@@ -62,7 +63,12 @@ def main():
 		print(f'You have {rate.remaining}/{rate.limit} API calls remaining.')
 	
 	if '-s' in myargs:
-		query = myargs['-s']
+		
+		if '-n' in sys.argv:
+			query = "sort:indexed "+myargs[-s]
+		else:
+			query = myargs['-s']
+			
 	result = token.search_code(query, order='desc')
 
 	max_size = 100
