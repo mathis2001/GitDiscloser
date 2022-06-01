@@ -40,7 +40,7 @@ You can now copy your token and paste it in the api.cfg file.
 
 ## Some screens:
 
-![image](https://user-images.githubusercontent.com/40497633/171193566-e9b6b4cb-33f2-4833-91db-1487ec5366e5.png)
+![image](https://user-images.githubusercontent.com/40497633/171377224-106dbd7c-aac7-4684-8fe8-4602470518fb.png)
 
 ![test](https://user-images.githubusercontent.com/40497633/171198846-f6cf1d46-87e9-4297-9b10-d47ac858f4a7.png)
 
