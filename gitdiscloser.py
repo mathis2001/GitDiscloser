@@ -21,12 +21,13 @@ class bcolors:
 def help():
 	print('''
   Options
-  -------------------------------------------
+  ----------------------------------------------
 	-h   help
 	-s   search request
 	-u   search for urls in code
+	-f   find word matches with a wordlist
 	-k   search for keyword
-  -------------------------------------------
+  ----------------------------------------------
   Config
 
         Simply put your github token in the api.cfg file. 
@@ -91,6 +92,24 @@ def main():
 				count = count+1
 			print(bcolors.INFO+"[*] "+bcolors.RESET+"Keyword matched "+str(count)+" time(s). \n")
 
+		if '-f' in myargs:
+			SecretList=[]
+			FinalList=[]
+			r = requests.get(url)
+			wordlist = myargs['-f']
+			print(" Possible secret(s) found in file:\n")
+			with open(wordlist) as l:
+				for word in l:
+					word = word.splitlines()
+					word = ' '.join(word)
+					SecretMatch = re.findall(word,r.text)
+					for find in SecretMatch:
+						SecretList.append(find)
+						for secret in SecretList:
+							if secret not in FinalList:
+								FinalList.append(secret)
+			for SecretFind in FinalList:
+				print(bcolors.OK+" [+] "+bcolors.RESET+SecretFind+"\n")
 if __name__ == '__main__':
 	try:
 		main()
