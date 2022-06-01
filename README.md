@@ -55,4 +55,5 @@ You can now copy your token and paste it in the api.cfg file.
 ## TO DO
 
 - fix bugs
-- add an output file option (you can use "| tee -a" to get an output anyway") 
+- Add an output file option (you can use "| tee -a" to get an output anyway") 
+- Add a limit option
