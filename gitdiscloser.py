@@ -77,7 +77,7 @@ def main():
 			r = requests.get(url)
 			regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
 			match = re.findall(regex,r.text)
-			print("\n URL(s) found in file:\n")
+			print(bcolors.INFO"\n URL(s) found in file:\n"+bcolors.RESET)
 			for Url in match:
 				print(bcolors.INFO+"[*] "+bcolors.RESET+Url[0])
 
@@ -97,7 +97,7 @@ def main():
 			FinalList=[]
 			r = requests.get(url)
 			wordlist = myargs['-f']
-			print(" Possible secret(s) found in file:\n")
+			print(bcolors.INFO+"\n Possible secret(s) found in file:\n"+bcolors.RESET)
 			with open(wordlist) as l:
 				for word in l:
 					word = word.splitlines()
