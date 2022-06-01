@@ -11,7 +11,7 @@ $ python3 gitdiscloser.py
 ```
 ## Usage:
 ```bash
-./gitdiscloser.py [-h] [-s github search] [-k keyword] [-u]
+./gitdiscloser.py [-h] [-s github search] [-k keyword] [-f wordlist] [-u]
 ```
 ## options:
 ```bash
@@ -19,9 +19,11 @@ $ python3 gitdiscloser.py
 
 -s github search (you can only put target.com or use dorks like "language:python target.com")
 
+-f find possible secrets with a wordlist
+
 -k search for a specific keyword (passwd, password, token, api_token, secret, private, ldap...)
 
--u search for urls in files (useful to get a larger attack surface)
+-u search for urls in files (useful to get endpoints and a larger attack surface)
 ```
 ## Configuration:
 
@@ -48,3 +50,4 @@ You can now copy your token and paste it in the api.cfg file.
 
 ![test](https://user-images.githubusercontent.com/40497633/171199524-cb1fec1e-2479-4624-9004-faebb9e835a2.png)
 
+![test](https://user-images.githubusercontent.com/40497633/171377033-91ba2761-18fd-4b75-9158-758d7db21473.png)
