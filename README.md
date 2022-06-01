@@ -11,7 +11,7 @@ $ python3 gitdiscloser.py
 ```
 ## Usage:
 ```bash
-./gitdiscloser.py [-h] [-s "github search"] [-k keyword] [-f wordlist] [-u]
+./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-k keyword] [-u] [-n]
 ```
 ## options:
 ```bash
