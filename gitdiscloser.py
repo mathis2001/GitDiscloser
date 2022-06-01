@@ -83,7 +83,7 @@ def main():
 			r = requests.get(url)
 			regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
 			match = re.findall(regex,r.text)
-			print(bcolors.INFO"\n URL(s) found in file:\n"+bcolors.RESET)
+			print(bcolors.INFO+"\n URL(s) found in file:\n"+bcolors.RESET)
 			for Url in match:
 				print(bcolors.INFO+"[*] "+bcolors.RESET+Url[0])
 
