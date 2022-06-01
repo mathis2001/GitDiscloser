@@ -21,6 +21,8 @@ $ python3 gitdiscloser.py
 
 -f find possible secrets with a wordlist
 
+-n sort by the more recently indexed (because old secrets can no longer be valid)
+
 -k search for a specific keyword (passwd, password, token, api_token, secret, private, ldap...)
 
 -u search for urls in files (useful to get endpoints and a larger attack surface)
