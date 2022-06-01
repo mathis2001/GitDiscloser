@@ -51,3 +51,8 @@ You can now copy your token and paste it in the api.cfg file.
 ![test](https://user-images.githubusercontent.com/40497633/171199524-cb1fec1e-2479-4624-9004-faebb9e835a2.png)
 
 ![test](https://user-images.githubusercontent.com/40497633/171377033-91ba2761-18fd-4b75-9158-758d7db21473.png)
+
+## TO DO
+
+- fix bugs
+- add an output file option (you can use "| tee -a" to get an output anyway") 
