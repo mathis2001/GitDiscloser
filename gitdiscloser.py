@@ -65,7 +65,7 @@ def main():
 	if '-s' in myargs:
 		
 		if '-n' in sys.argv:
-			query = "sort:indexed "+myargs[-s]
+			query = "sort:indexed "+myargs['-s']
 		else:
 			query = myargs['-s']
 			
