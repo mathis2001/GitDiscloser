@@ -62,7 +62,9 @@ this command will make a github search on all recently shared file ("-n") and wi
   
 If the tool find interesting results, you maybe want to know more about the author of the file.
 So you can use the profiling option of GitDiscloser to get profile information about it and then see his/her firstname and the company where he/she work. (if it is not written in github you can check is firstname on Linkedin to check his/her company).
+
 Exemple:
+
 GitDiscloser response:
 https://raw.githubusercontent.com/mathis2001/code.xyz
 
