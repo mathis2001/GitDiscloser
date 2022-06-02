@@ -77,7 +77,7 @@ def main():
 			getuser = token.get_user(username)
 			bio = getuser.bio
 			email = bcolors.INFO+str(getuser.email)+bcolors.RESET
-			firstname = bcolors.INFO+getuser.name+bcolors.RESET
+			firstname = bcolors.INFO+str(getuser.name)+bcolors.RESET
 			avatar = getuser.avatar_url
 			company = bcolors.INFO+str(getuser.company)+bcolors.RESET
 			location = getuser.location
