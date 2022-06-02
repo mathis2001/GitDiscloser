@@ -22,12 +22,16 @@ def help():
 	print('''
   Options
   ----------------------------------------------
-	-h   help
+  	-h   Show this help message
+  Search:
 	-s   search request
 	-u   search for urls in code
 	-f   find word matches with a wordlist
 	-n   sort by the more recently indexed
 	-k   search for keyword
+  Profiling:
+  	-r   repository link
+	-p   profile information
   ----------------------------------------------
   Config
 
@@ -43,7 +47,8 @@ def getopts(argv):
 				opts[argv[0]] = argv[1] 
 		except:
 			if argv[0] == '-h':
-				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-u] [-n]")
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-u] [-n]")
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]")
 				help()
 				sys.exit(0)
 		argv = argv[1:] 
@@ -53,7 +58,8 @@ def main():
 	myargs = getopts(argv)
 	if len(sys.argv) < 2:
 		print(bcolors.FAIL+"[!] "+bcolors.RESET+"No target given.")
-		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-u] [-n]")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-u] [-n]")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]")
 		sys.exit(0)
 	rate_limit = token.get_rate_limit()
 	rate = rate_limit.search
@@ -64,10 +70,10 @@ def main():
 	
 	if '-r' in myargs:
 		repo = myargs['-r']
-		if '-p' in sys.argv:
-			repolist = repo.split("/")
-			repolist.pop(1)
-			username = repolist[2]
+		repolist = repo.split("/")
+		repolist.pop(1)
+		username = repolist[2]
+		if '-p' in sys.argv:	
 			getuser = token.get_user(username)
 			bio = getuser.bio
 			email = bcolors.INFO+str(getuser.email)+bcolors.RESET
@@ -100,6 +106,7 @@ def main():
          created at: {creation}
 	last update: {update}
 			''')
+			
 	elif '-s' in myargs:
 		
 		if '-n' in sys.argv:
