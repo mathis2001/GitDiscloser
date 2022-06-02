@@ -11,7 +11,7 @@ $ python3 gitdiscloser.py
 ```
 ## Usage:
 ```bash
-Search: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-k keyword] [-u] [-n]
+Search: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-k keyword] [-l limit] [-u] [-n]
 Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]
 ```
 ## options:
@@ -25,9 +25,10 @@ Options
         -f   find word matches with a wordlist
         -n   sort by the more recently indexed
         -k   search for keyword
+        -l   limit (limit of results wanted)
   Profiling:
         -r   repository link
-        -p   profile information
+        -p   Github profile information
   ----------------------------------------------
   Config
 
@@ -80,4 +81,3 @@ Exemple:
 
 - fix bugs
 - Add an output file option (you can use "| tee -a" to get an output anyway") 
-- Add a limit option
