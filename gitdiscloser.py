@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from github import Github
 import sys
 from sys import argv
@@ -17,6 +19,18 @@ class bcolors:
 	FAIL = '\033[91m'
 	RESET = '\033[0m'
 	INFO = '\033[94m'
+	
+def banner():
+        print('''
+
+   ______   _   _   ______     _                 __
+ .' ___  | (_) / |_|_   _ `.  (_)               [  |  by S1rN3tZ
+/ .'   \_| __ `| |-' | | `. \ __   .--.   .---.  | |  .--.   .--.  .---.  _ .--.   
+| |   ____[  | | |   | |  | |[  | ( (`\] / /'`\] | |/ .'`\ \( (`\]/ /__\\[ `/'`\]  
+\ `.___]  || | | |, _| |_.' / | |  `'.'. | \__.  | || \__. | `'.'.| \__., | |      
+ `._____.'[___]\__/|______.' [___][\__) )'.___.'[___]'.__.' [\__) )'.__.'[___]     
+
+        ''')
 
 def help():
 	print('''
@@ -162,6 +176,7 @@ def main():
 					print(bcolors.OK+" [+] "+bcolors.RESET+SecretFind+"\n")
 if __name__ == '__main__':
 	try:
+		banner()
 		main()
 	except Exception as e:
 		print(bcolors.FAIL+"[!] "+bcolors.RESET+"A problem has occured.")
