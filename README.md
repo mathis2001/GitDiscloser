@@ -42,17 +42,12 @@ You can now copy your token and paste it in the api.cfg file.
 
 ## Some screens:
 
-![image](https://user-images.githubusercontent.com/40497633/171377224-106dbd7c-aac7-4684-8fe8-4602470518fb.png)
+![image](https://user-images.githubusercontent.com/40497633/171599615-d4ea31ac-a6bb-4d8d-9be7-0ef7a1e6ab33.png)
+![tempsnip](https://user-images.githubusercontent.com/40497633/171599909-f942bc64-7e95-4c89-8fcd-a190b79dd45b.png)
+![tempsnip](https://user-images.githubusercontent.com/40497633/171600194-a5504367-0d29-411e-9af2-c05a3fb4899a.png)
+![tempsnip](https://user-images.githubusercontent.com/40497633/171600770-77d167e8-b95f-4e4b-a234-bc65a4c50cbf.png)
+![tempsnip](https://user-images.githubusercontent.com/40497633/171601131-718194d0-2fbf-4eba-8aaf-7623ad8ad950.png)
 
-![test](https://user-images.githubusercontent.com/40497633/171198846-f6cf1d46-87e9-4297-9b10-d47ac858f4a7.png)
-
-![test](https://user-images.githubusercontent.com/40497633/171200623-941d6392-3860-4707-a62b-fc62193787cb.png)
-
-![test](https://user-images.githubusercontent.com/40497633/171198551-7a38fa0a-2ec8-47e5-9641-9737b3706903.png)
-
-![test](https://user-images.githubusercontent.com/40497633/171199524-cb1fec1e-2479-4624-9004-faebb9e835a2.png)
-
-![test](https://user-images.githubusercontent.com/40497633/171377033-91ba2761-18fd-4b75-9158-758d7db21473.png)
 
 ## TO DO
 
