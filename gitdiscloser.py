@@ -62,60 +62,97 @@ def main():
 	else:
 		print(f'You have {rate.remaining}/{rate.limit} API calls remaining.')
 	
-	if '-s' in myargs:
+	if '-r' in myargs:
+		repo = myargs['-r']
+		if '-p' in sys.argv:
+			repolist = repo.split("/")
+			repolist.pop(1)
+			username = repolist[2]
+			getuser = token.get_user(username)
+			bio = getuser.bio
+			email = bcolors.INFO+str(getuser.email)+bcolors.RESET
+			firstname = bcolors.INFO+getuser.name+bcolors.RESET
+			avatar = getuser.avatar_url
+			company = bcolors.INFO+str(getuser.company)+bcolors.RESET
+			location = getuser.location
+			followers = bcolors.INFO+str(getuser.followers)+bcolors.RESET
+			following = bcolors.INFO+str(getuser.following)+bcolors.RESET
+			blog = getuser.blog
+			creation = getuser.created_at
+			update = getuser.updated_at
+			print(f'''
+	 avatar: {avatar} 
+	       ____________________________________________________________________
+              [ Profile	                                                      -   x]
+              |____________________________________________________________________|
+              |						                    
+       	      |	username: {username}                        
+              |	firstname: {firstname}	                    
+              |	bio: {bio}                                  
+	      | email: {email}
+	      | company : {company}
+	      |	location: {location}
+              |
+	      |	followers: {followers} following: {following}
+	      |	
+	      |	website: {blog}
+              [____________________________________________________________________
+         created at: {creation}
+	last update: {update}
+			''')
+	elif '-s' in myargs:
 		
 		if '-n' in sys.argv:
 			query = "sort:indexed "+myargs['-s']
 		else:
 			query = myargs['-s']
-			
-	result = token.search_code(query, order='desc')
+		result = token.search_code(query, order='desc')
 
-	max_size = 100
-	print(f'Found {result.totalCount} file(s):')
-	if result.totalCount > max_size:
-		result = result[:max_size]
+		max_size = 100
+		print(f'Found {result.totalCount} file(s):')
+		if result.totalCount > max_size:
+			result = result[:max_size]
 
-	for file in result:
-		url=f'{file.download_url}'
-		print(bcolors.OK+"[+] "+bcolors.RESET+url)
-		if '-u' in sys.argv:
-			r = requests.get(url)
-			regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
-			match = re.findall(regex,r.text)
-			print(bcolors.INFO+"\n URL(s) found in file:\n"+bcolors.RESET)
-			for Url in match:
-				print(bcolors.INFO+"[*] "+bcolors.RESET+Url[0])
+		for file in result:
+			url=f'{file.download_url}'
+			print(bcolors.OK+"[+] "+bcolors.RESET+url)
+			if '-u' in sys.argv:
+				r = requests.get(url)
+				regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
+				match = re.findall(regex,r.text)
+				print(bcolors.INFO+"\n URL(s) found in file:\n"+bcolors.RESET)
+				for Url in match:
+					print(bcolors.INFO+"[*] "+bcolors.RESET+Url[0])
 
-		if '-k' in myargs:
-			r = requests.get(url)
-			reg = myargs['-k']
-			count=0
-			keyMatch = re.findall(reg,r.text)
-			if reg in keyMatch:
-				print(bcolors.OK+"[+] "+bcolors.RESET+"Keyword found !")
-			for keyword in keyMatch:
-				count = count+1
-			print(bcolors.INFO+"[*] "+bcolors.RESET+"Keyword matched "+str(count)+" time(s). \n")
+			if '-k' in myargs:
+				r = requests.get(url)
+				reg = myargs['-k']
+				count=0
+				keyMatch = re.findall(reg,r.text)
+				if reg in keyMatch:
+					print(bcolors.OK+"[+] "+bcolors.RESET+"Keyword found !")
+				for keyword in keyMatch:
+					count = count+1
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"Keyword matched "+str(count)+" time(s). \n")
 
-		if '-f' in myargs:
-			SecretList=[]
-			FinalList=[]
-			r = requests.get(url)
-			wordlist = myargs['-f']
-			print(bcolors.INFO+"\n Possible secret(s) found in file:\n"+bcolors.RESET)
-			with open(wordlist) as l:
-				for word in l:
-					word = word.splitlines()
-					word = ' '.join(word)
-					SecretMatch = re.findall(word,r.text)
-					for find in SecretMatch:
-						SecretList.append(find)
-						for secret in SecretList:
-							if secret not in FinalList:
-								FinalList.append(secret)
-			for SecretFind in FinalList:
-				print(bcolors.OK+" [+] "+bcolors.RESET+SecretFind+"\n")
+			if '-f' in myargs:
+				SecretList=[]
+				FinalList=[]
+				r = requests.get(url)
+				wordlist = myargs['-f']
+				print(bcolors.INFO+"\n Possible secret(s) found in file:\n"+bcolors.RESET)
+				with open(wordlist) as l:
+					for word in l:
+						word = word.splitlines()
+						word = ' '.join(word)
+						SecretMatch = re.findall(word,r.text)
+						for find in SecretMatch:
+							SecretList.append(find)
+							for secret in SecretList:
+								if secret not in FinalList:
+									FinalList.append(secret)
+				for SecretFind in FinalList:
+					print(bcolors.OK+" [+] "+bcolors.RESET+SecretFind+"\n")
 if __name__ == '__main__':
 	try:
 		main()
