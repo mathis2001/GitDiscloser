@@ -73,25 +73,6 @@ Possible secret(s) found in file:
 Check if mathis2001 work at target.com:
 
 ./gitdiscloser -r https://raw.githubusercontent.com/mathis2001/code.xyz -p
-
-  avatar: https://avatars.githubusercontent.com/u/69412483?v=4 
-	             ____________________________________________________________________
-              [ Profile	                                                      -   x]
-              |____________________________________________________________________|
-              |						                    
-       	      |	username: Ewha                        
-              |	firstname: None	                    
-              |	bio: None                                  
-	            | email: None
-	            | company : target.com
-	            |	location: None
-              |
-	            |	followers: 0 following: 0
-	            |	
-	            |	website: 
-              [____________________________________________________________________
-         created at: 2020-08-09 05:39:15
-	last update: 2022-05-23 13:24:48
   
 If your target work at the target company, you can now check for (potentially other) information disclosure in his/her other codes thanks to the "user:" dork
 Exemple:
