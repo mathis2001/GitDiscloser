@@ -95,4 +95,4 @@ Exemple:
 
 - fix bugs
 - Add an output file option (you can use "| tee -a" to get an output anyway")
-- Secondary rate-limit blocking some requests
+- Secondary rate-limit restriction when making a query with to many responses.
