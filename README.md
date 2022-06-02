@@ -49,7 +49,7 @@ You can now copy your token and paste it in the api.cfg file.
 
 ## Use case:
 
-You make a search for a bug bounty program on a website (exp:target.com), so you can use GitDiscloser like this:
+You search for information disclosure on a target website/domain (exp:target.com), so you can use GitDiscloser like this:
 ```bash
 ./gitdiscloser.py -s target.com -f <wordlist> -n
 ```
@@ -60,9 +60,9 @@ or if you want to use dorks:
 this command will make a github search on all recently shared file ("-n") and will search for all keywords of your wordlist in it ("-f").
   
 If the tool find interesting results, you maybe want to know more about the author of the file.
-So you can use the profiling option of GitDiscloser to get profile information about it end then see the firstname of the author or if he/she work in your target company. (if it is not written in github you can check is firstname on Linkedin.
+So you can use the profiling option of GitDiscloser to get profile information about it and then see the firstname of the author or if he/she work in your target company. (if it is not written in github you can check is firstname on Linkedin.
   
-If your target work at your target company, you can now check for (potentially other) information disclosure in his/her other codes thanks to the "user:" dork
+If your target work at the target company, you can now check for (potentially other) information disclosure in his/her other codes thanks to the "user:" dork
 Exemple:
 ```bash 
 ./gitdiscloser -s "user:<username>" -f <wordlist> -n
