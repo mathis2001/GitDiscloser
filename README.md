@@ -94,4 +94,5 @@ Exemple:
 ## TO DO
 
 - fix bugs
-- Add an output file option (you can use "| tee -a" to get an output anyway") 
+- Add an output file option (you can use "| tee -a" to get an output anyway")
+- Secondary rate-limit blocking some requests
