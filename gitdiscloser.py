@@ -137,8 +137,8 @@ def main():
 			limit = int(myargs['-l'])
 			result = result[:limit]
 
-			elif result.totalCount > max_size:
-                        	result = result[:max_size]
+		elif result.totalCount > max_size:
+			result = result[:max_size]
 
 		for file in result:
 			url=f'{file.download_url}'
