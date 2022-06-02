@@ -11,21 +11,28 @@ $ python3 gitdiscloser.py
 ```
 ## Usage:
 ```bash
-./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-k keyword] [-u] [-n]
+Search: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-k keyword] [-u] [-n]
+Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]
 ```
 ## options:
 ```bash
--h help
+Options
+  ----------------------------------------------
+        -h   Show this help message
+  Search:
+        -s   search request
+        -u   search for urls in code
+        -f   find word matches with a wordlist
+        -n   sort by the more recently indexed
+        -k   search for keyword
+  Profiling:
+        -r   repository link
+        -p   profile information
+  ----------------------------------------------
+  Config
 
--s github search (you can only put target.com or use dorks like "language:python target.com")
+        Simply put your github token in the api.cfg file. 
 
--f find possible secrets with a wordlist
-
--n sort by the more recently indexed (because old secrets can no longer be valid)
-
--k search for a specific keyword (passwd, password, token, api_token, secret, private, ldap...)
-
--u search for urls in files (useful to get endpoints and a larger attack surface)
 ```
 ## Configuration:
 
