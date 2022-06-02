@@ -43,6 +43,7 @@ def help():
 	-f   find word matches with a wordlist
 	-n   sort by the more recently indexed
 	-k   search for keyword
+	-l   limit (number of results wanted)
   Profiling:
   	-r   repository link
 	-p   profile information
@@ -61,7 +62,7 @@ def getopts(argv):
 				opts[argv[0]] = argv[1] 
 		except:
 			if argv[0] == '-h':
-				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-u] [-n]")
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-l limit] [-u] [-n]")
 				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]")
 				help()
 				sys.exit(0)
@@ -72,7 +73,7 @@ def main():
 	myargs = getopts(argv)
 	if len(sys.argv) < 2:
 		print(bcolors.FAIL+"[!] "+bcolors.RESET+"No target given.")
-		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-u] [-n]")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-l limit] [-u] [-n]")
 		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]")
 		sys.exit(0)
 	rate_limit = token.get_rate_limit()
@@ -131,8 +132,13 @@ def main():
 
 		max_size = 100
 		print(f'Found {result.totalCount} file(s):')
-		if result.totalCount > max_size:
-			result = result[:max_size]
+		
+		if '-l' in myargs:
+                        limit = int(myargs['-l'])
+                        result = result[:limit]
+
+                elif result.totalCount > max_size:
+                        result = result[:max_size]
 
 		for file in result:
 			url=f'{file.download_url}'
