@@ -134,8 +134,8 @@ def main():
 		print(f'Found {result.totalCount} file(s):')
 		
 		if '-l' in myargs:
-                        limit = int(myargs['-l'])
-                        result = result[:limit]
+			limit = int(myargs['-l'])
+			result = result[:limit]
 
 			elif result.totalCount > max_size:
                         	result = result[:max_size]
