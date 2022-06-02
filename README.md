@@ -30,7 +30,7 @@ Options
         -r   repository link
         -p   Github profile information
   ----------------------------------------------
-  Config
+  Config 
 
         Simply put your github token in the api.cfg file. 
 
@@ -61,7 +61,37 @@ or if you want to use dorks:
 this command will make a github search on all recently shared file ("-n") and will search for all keywords of your wordlist in it ("-f").
   
 If the tool find interesting results, you maybe want to know more about the author of the file.
-So you can use the profiling option of GitDiscloser to get profile information about it and then see the firstname of the author or if he/she work in your target company. (if it is not written in github you can check is firstname on Linkedin.
+So you can use the profiling option of GitDiscloser to get profile information about it and then see his/her firstname and the company where he/she work. (if it is not written in github you can check is firstname on Linkedin to check his/her company).
+Exemple:
+GitDiscloser response:
+https://raw.githubusercontent.com/mathis2001/code.xyz
+
+Possible secret(s) found in file:
+
+[+] token
+
+Check if mathis2001 work at target.com:
+
+./gitdiscloser -r https://raw.githubusercontent.com/mathis2001/code.xyz -p
+
+  avatar: https://avatars.githubusercontent.com/u/69412483?v=4 
+	             ____________________________________________________________________
+              [ Profile	                                                      -   x]
+              |____________________________________________________________________|
+              |						                    
+       	      |	username: Ewha                        
+              |	firstname: None	                    
+              |	bio: None                                  
+	            | email: None
+	            | company : target.com
+	            |	location: None
+              |
+	            |	followers: 0 following: 0
+	            |	
+	            |	website: 
+              [____________________________________________________________________
+         created at: 2020-08-09 05:39:15
+	last update: 2022-05-23 13:24:48
   
 If your target work at the target company, you can now check for (potentially other) information disclosure in his/her other codes thanks to the "user:" dork
 Exemple:
