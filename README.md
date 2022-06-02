@@ -47,6 +47,26 @@ Give a name to your token, select only the public_repo access and clic on "Gener
 
 You can now copy your token and paste it in the api.cfg file.
 
+## Use case:
+
+You make a search for a bug bounty program on a website (exp:target.com), so you can use GitDiscloser like this:
+```bash
+./gitdiscloser.py -s target.com -f <wordlist> -n
+```
+or if you want to use dorks:
+```bash
+./gitdiscloser.py -s "<dork>:target.com" -f <wordlist> -n
+```
+this command will make a github search on all recently shared file ("-n") and will search for all keywords of your wordlist in it ("-f").
+  
+If the tool find interesting results, you maybe want to know more about the author of the file.
+So you can use the profiling option of GitDiscloser to get profile information about it end then see the firstname of the author or if he/she work in your target company. (if it is not written in github you can check is firstname on Linkedin.
+  
+If your target work at your target company, you can now check for (potentially other) information disclosure in his/her other codes thanks to the "user:" dork
+Exemple:
+```bash 
+./gitdiscloser -s "user:<username>" -f <wordlist> -n
+```
 ## Some screens:
 
 ![image](https://user-images.githubusercontent.com/40497633/171599615-d4ea31ac-a6bb-4d8d-9be7-0ef7a1e6ab33.png)
