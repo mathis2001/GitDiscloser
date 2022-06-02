@@ -66,6 +66,7 @@ So you can use the profiling option of GitDiscloser to get profile information a
 Exemple:
 
 GitDiscloser response:
+
 https://raw.githubusercontent.com/mathis2001/code.xyz
 
 Possible secret(s) found in file:
