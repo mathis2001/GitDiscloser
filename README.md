@@ -13,7 +13,7 @@ $ python3 gitdiscloser.py
 ```bash
 Search: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-l limit] [-u] [-n] [-c]
 Profiling: ./gitdiscloser.py [-h] [-r repository link |-p username]
-Advanced: ./gitdiscloser.py [-h] [-a user/repository] [-f wordlist]
+Advanced: ./gitdiscloser.py [-h] [-a user/repository] [-f wordlist] [-l limit]
 ```
 ## options:
 ```bash
