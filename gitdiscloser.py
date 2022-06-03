@@ -75,39 +75,25 @@ def gitsearch(input):
 	result = token.search_code(query, order='desc')
 	return result
 
-def main():
-	myargs = getopts(argv)
-	if len(sys.argv) < 2:
-		print(bcolors.FAIL+"[!] "+bcolors.RESET+"No target given.")
-		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-l limit] [-u] [-n]")
-		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]")
-		sys.exit(0)
-	rate_limit = token.get_rate_limit()
-	rate = rate_limit.search
-	if rate.remaining == 0:
-		print(f'You have 0/{rate.limit} API calls remaining. Reset time: {rate.reset}.')
-	else:
-		print(f'You have {rate.remaining}/{rate.limit} API calls remaining.')
-	
-	if '-r' in myargs:
-		repo = myargs['-r']
-		repolist = repo.split("/")
-		repolist.pop(1)
-		username = repolist[2]
-		if '-p' in sys.argv:	
-			getuser = token.get_user(username)
-			bio = getuser.bio
-			email = bcolors.INFO+str(getuser.email)+bcolors.RESET
-			firstname = bcolors.INFO+str(getuser.name)+bcolors.RESET
-			avatar = getuser.avatar_url
-			company = bcolors.INFO+str(getuser.company)+bcolors.RESET
-			location = getuser.location
-			followers = bcolors.INFO+str(getuser.followers)+bcolors.RESET
-			following = bcolors.INFO+str(getuser.following)+bcolors.RESET
-			blog = getuser.blog
-			creation = getuser.created_at
-			update = getuser.updated_at
-			print(f'''
+def profiler(repository):
+	repo = repository
+	repolist = repo.split("/")
+	repolist.pop(1)
+	username = repolist[2]
+	if '-p' in sys.argv:	
+		getuser = token.get_user(username)
+		bio = getuser.bio
+		email = bcolors.INFO+str(getuser.email)+bcolors.RESET
+		firstname = bcolors.INFO+str(getuser.name)+bcolors.RESET
+		avatar = getuser.avatar_url
+		company = bcolors.INFO+str(getuser.company)+bcolors.RESET
+		location = getuser.location
+		followers = bcolors.INFO+str(getuser.followers)+bcolors.RESET
+		following = bcolors.INFO+str(getuser.following)+bcolors.RESET
+		blog = getuser.blog
+		creation = getuser.created_at
+		update = getuser.updated_at
+		output = f'''
 	 avatar: {avatar} 
 	       ____________________________________________________________________
               [ Profile	                                                      -   x]
@@ -126,8 +112,26 @@ def main():
               [____________________________________________________________________
          created at: {creation}
 	last update: {update}
-			''')
-			
+			'''
+		return output
+
+def main():
+	myargs = getopts(argv)
+	if len(sys.argv) < 2:
+		print(bcolors.FAIL+"[!] "+bcolors.RESET+"No target given.")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-l limit] [-u] [-n]")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]")
+		sys.exit(0)
+	rate_limit = token.get_rate_limit()
+	rate = rate_limit.search
+	if rate.remaining == 0:
+		print(f'You have 0/{rate.limit} API calls remaining. Reset time: {rate.reset}.')
+	else:
+		print(f'You have {rate.remaining}/{rate.limit} API calls remaining.')
+	
+	if '-r' in myargs:
+		profile = profiler(myargs['-r'])
+		print(profile)
 	elif '-s' in myargs:
 		result=gitsearch(myargs['-s'])
 		max_size = 100
