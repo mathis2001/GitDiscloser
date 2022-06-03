@@ -45,6 +45,9 @@ def help():
   Profiling:
   	-r   profile information by repository link
 	-p   profile information by username
+  Advanced (commits scan):
+        -a   repository (mathis/GitDiscloser)
+        -f   find word matches in commits with a wordlist
   --------------------------------------------------------
   Config
 
@@ -62,6 +65,7 @@ def getopts(argv):
 			if argv[0] == '-h':
 				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-l limit] [-u] [-n] [-c]")
 				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link | -p username]")
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"Advanced: ./gitdiscloser.py [-h] [-a user/repository] [-f wordlist]")
 				help()
 				sys.exit(0)
 		argv = argv[1:] 
@@ -170,6 +174,7 @@ def main():
 		print(bcolors.FAIL+"[!] "+bcolors.RESET+"No target given.")
 		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-l limit] [-u] [-n] [-c]")
 		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link | -p username]")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"Advanced: ./gitdiscloser.py [-h] [-a user/repository] [-f wordlist]")
 		sys.exit(0)
 	rate_limit = token.get_rate_limit()
 	rate = rate_limit.search
