@@ -40,7 +40,6 @@ def help():
 	-u   search for urls in code
 	-f   find word matches with a wordlist
 	-n   sort by the more recently indexed
-	-k   search for keyword
 	-l   limit (number of results wanted)
   Profiling:
   	-r   repository link
@@ -60,7 +59,7 @@ def getopts(argv):
 				opts[argv[0]] = argv[1] 
 		except:
 			if argv[0] == '-h':
-				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-l limit] [-u] [-n]")
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-l limit] [-u] [-n]")
 				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]")
 				help()
 				sys.exit(0)
@@ -125,7 +124,7 @@ def main():
 	myargs = getopts(argv)
 	if len(sys.argv) < 2:
 		print(bcolors.FAIL+"[!] "+bcolors.RESET+"No target given.")
-		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-l limit] [-u] [-n]")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-l limit] [-u] [-n]")
 		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]")
 		sys.exit(0)
 	rate_limit = token.get_rate_limit()
@@ -159,16 +158,6 @@ def main():
 				for Url in match:
 					print(bcolors.INFO+"[*] "+bcolors.RESET+Url[0])
 
-			if '-k' in myargs:
-				r = requests.get(url)
-				reg = myargs['-k']
-				count=0
-				keyMatch = re.findall(reg,r.text)
-				if reg in keyMatch:
-					print(bcolors.OK+"[+] "+bcolors.RESET+"Keyword found !")
-				for keyword in keyMatch:
-					count = count+1
-				print(bcolors.INFO+"[*] "+bcolors.RESET+"Keyword matched "+str(count)+" time(s). \n")
 
 			if '-f' in myargs:
 				SecretList=[]
