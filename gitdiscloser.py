@@ -159,11 +159,15 @@ def search_secrets(source):
 		pass
 
 def commit_scan(reposit):
+	myargs = getopts(argv)
 	repo = token.get_repo(reposit)
 
 	commits = repo.get_commits()
+	
+	if '-l' in myargs:
+		limit=int(myargs['-l'])
 
-	for commit in commits:
+	for commit in commits[:limit]:
 		commit_url = commit.commit.html_url
 		print(bcolors.OK+"[+] "+bcolors.RESET+commit_url)
 		search_secrets(commit_url)
