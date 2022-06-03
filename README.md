@@ -87,6 +87,9 @@ Exemple:
 ## Some screens:
 
 ![image](https://user-images.githubusercontent.com/40497633/171843426-39d00404-c76d-4883-96e5-c0832f55b026.png)
+![image](https://user-images.githubusercontent.com/40497633/171844662-ffea0b28-9e91-4602-93ef-caa3b588db03.png)
+![image](https://user-images.githubusercontent.com/40497633/171844784-ab67d302-5875-4d10-ac20-a49dbc318a43.png)
+
 
 
 ## TO DO
