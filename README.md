@@ -11,13 +11,13 @@ $ python3 gitdiscloser.py
 ```
 ## Usage:
 ```bash
-Search: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-l limit] [-u] [-n]
+Search: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-l limit] [-u] [-n] [-c]
 Profiling: ./gitdiscloser.py [-h] [-r repository link |-p username]
 ```
 ## options:
 ```bash
 Options
-  ----------------------------------------------
+  ---------------------------------------------------------
         -h   Show this help message
   Search:
         -s   search request
@@ -25,10 +25,11 @@ Options
         -f   find word matches with a wordlist
         -n   sort by the more recently indexed
         -l   limit (limit of results wanted)
+        -c   profile information for each result
   Profiling:
         -r   profile information by repository link
         -p   profile information by username
-  ----------------------------------------------
+  --------------------------------------------------------
   Config 
 
         Simply put your github token in the api.cfg file. 
@@ -75,6 +76,8 @@ Possible secret(s) found in file:
 Check if mathis2001 work at target.com:
 
 ./gitdiscloser -r https://raw.githubusercontent.com/mathis2001/code.xyz or -p mathis2001
+
+you can also profile each results with the '-c' option.
   
 If your target work at the target company, you can now check for (potentially other) information disclosure in his/her other codes thanks to the "user:" dork
 Exemple:
