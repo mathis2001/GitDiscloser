@@ -11,7 +11,7 @@ $ python3 gitdiscloser.py
 ```
 ## Usage:
 ```bash
-Search: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-k keyword] [-l limit] [-u] [-n]
+Search: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-l limit] [-u] [-n]
 Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]
 ```
 ## options:
@@ -24,7 +24,6 @@ Options
         -u   search for urls in code
         -f   find word matches with a wordlist
         -n   sort by the more recently indexed
-        -k   search for keyword
         -l   limit (limit of results wanted)
   Profiling:
         -r   repository link
