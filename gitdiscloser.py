@@ -5,11 +5,9 @@ import sys
 from sys import argv
 import requests
 import re
-import configparser
+import os
 
-config = configparser.RawConfigParser()
-config.read('api.cfg')
-ACCESS_TOKEN = config.get('Github', 'token')
+ACCESS_TOKEN = os.environ['GITHUB_TOKEN']
 
 token = Github(ACCESS_TOKEN)
 
@@ -50,7 +48,7 @@ def help():
   ----------------------------------------------
   Config
 
-        Simply put your github token in the api.cfg file. 
+        Simply put your github token in your environment variables with the name 'GITHUB_TOKEN'.
 
 	''')
 
