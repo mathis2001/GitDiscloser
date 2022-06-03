@@ -33,19 +33,19 @@ def banner():
 def help():
 	print('''
   Options
-  ----------------------------------------------
+  --------------------------------------------------------
   	-h   Show this help message
   Search:
 	-s   search request
 	-u   search for urls in code
 	-f   find word matches with a wordlist
 	-n   sort by the more recently indexed
-	-k   search for keyword
 	-l   limit (number of results wanted)
+	-c   profile information for each result
   Profiling:
-  	-r   repository link
-	-p   profile information
-  ----------------------------------------------
+  	-r   profile information by repository link
+	-p   profile information by username
+  --------------------------------------------------------
   Config
 
         Simply put your github token in your environment variables with the name 'GITHUB_TOKEN'.
@@ -60,40 +60,50 @@ def getopts(argv):
 				opts[argv[0]] = argv[1] 
 		except:
 			if argv[0] == '-h':
-				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-l limit] [-u] [-n]")
-				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]")
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-l limit] [-u] [-n] [-c]")
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link | -p username]")
 				help()
 				sys.exit(0)
 		argv = argv[1:] 
+	
 	return opts
 
 def gitsearch(input):
-	if '-n' in sys.argv:
+	if '-n' in argv:
 			query = "sort:indexed "+input
 	else:
 			query = input
 	result = token.search_code(query, order='desc')
 	return result
 
-def profiler(repository):
-	repo = repository
-	repolist = repo.split("/")
-	repolist.pop(1)
-	username = repolist[2]
-	if '-p' in sys.argv:	
-		getuser = token.get_user(username)
-		bio = getuser.bio
-		email = bcolors.INFO+str(getuser.email)+bcolors.RESET
-		firstname = bcolors.INFO+str(getuser.name)+bcolors.RESET
-		avatar = getuser.avatar_url
-		company = bcolors.INFO+str(getuser.company)+bcolors.RESET
-		location = getuser.location
-		followers = bcolors.INFO+str(getuser.followers)+bcolors.RESET
-		following = bcolors.INFO+str(getuser.following)+bcolors.RESET
-		blog = getuser.blog
-		creation = getuser.created_at
-		update = getuser.updated_at
-		output = f'''
+def profiler(source=0):
+	myargs = getopts(argv)
+	if '-r' in myargs:
+		repo = myargs['-r']
+		repolist = repo.split("/")
+		repolist.pop(1)
+		username = repolist[2]
+	elif '-p' in myargs:
+		username = myargs['-p']
+	elif '-c' in argv:
+		repo=source
+		repolist = repo.split("/")
+		repolist.pop(1)
+		username = repolist[2]
+	
+	getuser = token.get_user(username)
+	bio = getuser.bio
+	email = bcolors.INFO+str(getuser.email)+bcolors.RESET
+	firstname = bcolors.INFO+str(getuser.name)+bcolors.RESET
+	avatar = getuser.avatar_url
+	company = bcolors.INFO+str(getuser.company)+bcolors.RESET
+	location = getuser.location
+	followers = bcolors.INFO+str(getuser.followers)+bcolors.RESET
+	following = bcolors.INFO+str(getuser.following)+bcolors.RESET
+	blog = getuser.blog
+	creation = getuser.created_at
+	update = getuser.updated_at
+	output = f'''
 	 avatar: {avatar} 
 	       ____________________________________________________________________
               [ Profile	                                                      -   x]
@@ -112,8 +122,8 @@ def profiler(repository):
               [____________________________________________________________________
          created at: {creation}
 	last update: {update}
-			'''
-		return output
+	'''
+	print(output)
 
 def search_urls(source):
 	r = requests.get(source)
@@ -123,10 +133,10 @@ def search_urls(source):
 
 def main():
 	myargs = getopts(argv)
-	if len(sys.argv) < 2:
+	if len(argv) < 2:
 		print(bcolors.FAIL+"[!] "+bcolors.RESET+"No target given.")
-		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-k keyword] [-l limit] [-u] [-n]")
-		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Search: ./gitdiscloser.py [-h] [-s github search] [-f wordlist] [-l limit] [-u] [-n] [-c]")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: Profiling: ./gitdiscloser.py [-h] [-r repository link | -p username]")
 		sys.exit(0)
 	rate_limit = token.get_rate_limit()
 	rate = rate_limit.search
@@ -134,10 +144,10 @@ def main():
 		print(f'You have 0/{rate.limit} API calls remaining. Reset time: {rate.reset}.')
 	else:
 		print(f'You have {rate.remaining}/{rate.limit} API calls remaining.')
-	
-	if '-r' in myargs:
-		profile = profiler(myargs['-r'])
-		print(profile)
+
+	if not '-s' in myargs:
+		profiler()
+		
 	elif '-s' in myargs:
 		result=gitsearch(myargs['-s'])
 		max_size = 100
@@ -153,22 +163,18 @@ def main():
 		for file in result:
 			url=f'{file.download_url}'
 			print(bcolors.OK+"[+] "+bcolors.RESET+url)
-			if '-u' in sys.argv:
+			if '-c' in argv:
+				profiler(url)
+			else:
+				pass
+
+			if '-u' in argv:
 				match=search_urls(url)
 				print(bcolors.INFO+"\n URL(s) found in file:\n"+bcolors.RESET)
 				for Url in match:
 					print(bcolors.INFO+"[*] "+bcolors.RESET+Url[0])
-
-			if '-k' in myargs:
-				r = requests.get(url)
-				reg = myargs['-k']
-				count=0
-				keyMatch = re.findall(reg,r.text)
-				if reg in keyMatch:
-					print(bcolors.OK+"[+] "+bcolors.RESET+"Keyword found !")
-				for keyword in keyMatch:
-					count = count+1
-				print(bcolors.INFO+"[*] "+bcolors.RESET+"Keyword matched "+str(count)+" time(s). \n")
+			else:
+				pass
 
 			if '-f' in myargs:
 				SecretList=[]
@@ -188,6 +194,8 @@ def main():
 									FinalList.append(secret)
 				for SecretFind in FinalList:
 					print(bcolors.OK+" [+] "+bcolors.RESET+SecretFind+"\n")
+			else:
+				pass
 if __name__ == '__main__':
 	try:
 		banner()
@@ -198,3 +206,4 @@ if __name__ == '__main__':
 		print(e)
 	except KeyboardInterrupt:
         	print(bcolors.FAIL+"[!] "+bcolors.RESET+"Script canceled.")
+
