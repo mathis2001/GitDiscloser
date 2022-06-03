@@ -131,6 +131,39 @@ def search_urls(source):
 	match = re.findall(regex,r.text)
 	return match
 
+def search_secrets(source):
+	myargs=getopts(argv)
+	if '-f' in myargs:
+		wordlist = myargs['-f']
+		SecretList=[]
+		FinalList=[]
+		r = requests.get(source)
+		print(bcolors.INFO+"\n Possible secret(s) found in file:\n"+bcolors.RESET)
+		with open(wordlist) as l:
+			for word in l:
+				word = word.splitlines()
+				word = ' '.join(word)
+				SecretMatch = re.findall(word,r.text)
+				for find in SecretMatch:
+					SecretList.append(find)
+					for secret in SecretList:
+						if secret not in FinalList:
+							FinalList.append(secret)
+		for SecretFind in FinalList:
+			print(bcolors.OK+" [+] "+bcolors.RESET+SecretFind+"\n")
+	else:
+		pass
+
+def commit_scan(reposit):
+	repo = token.get_repo(reposit)
+
+	commits = repo.get_commits()
+
+	for commit in commits:
+		commit_url = commit.commit.html_url
+		print(bcolors.OK+"[+] "+bcolors.RESET+commit_url)
+		search_secrets(commit_url)
+
 def main():
 	myargs = getopts(argv)
 	if len(argv) < 2:
@@ -144,11 +177,15 @@ def main():
 		print(f'You have 0/{rate.limit} API calls remaining. Reset time: {rate.reset}.')
 	else:
 		print(f'You have {rate.remaining}/{rate.limit} API calls remaining.')
-
+	if '-a' in myargs:
+		commit_scan(myargs['-a'])
+	
 	if not '-s' in myargs:
-		profiler()
+		if not '-a' in myargs:
+			profiler()
+			print('test')
 		
-	elif '-s' in myargs:
+	if '-s' in myargs:
 		result=gitsearch(myargs['-s'])
 		max_size = 100
 		print(f'Found {result.totalCount} file(s):')
@@ -176,26 +213,9 @@ def main():
 			else:
 				pass
 
-			if '-f' in myargs:
-				SecretList=[]
-				FinalList=[]
-				r = requests.get(url)
-				wordlist = myargs['-f']
-				print(bcolors.INFO+"\n Possible secret(s) found in file:\n"+bcolors.RESET)
-				with open(wordlist) as l:
-					for word in l:
-						word = word.splitlines()
-						word = ' '.join(word)
-						SecretMatch = re.findall(word,r.text)
-						for find in SecretMatch:
-							SecretList.append(find)
-							for secret in SecretList:
-								if secret not in FinalList:
-									FinalList.append(secret)
-				for SecretFind in FinalList:
-					print(bcolors.OK+" [+] "+bcolors.RESET+SecretFind+"\n")
-			else:
-				pass
+			search_secrets(url)
+				
+
 if __name__ == '__main__':
 	try:
 		banner()
