@@ -61,7 +61,7 @@ or if you want to use dorks:
 this command will make a github search on all recently shared file ("-n") and will search for all keywords of your wordlist in it ("-f").
   
 If the tool find interesting results, you maybe want to know more about the author of the file.
-So you can use the profiling option of GitDiscloser to get profile information about it and then see his/her firstname and the company where he/she work. (if it is not written in github you can check is firstname on Linkedin to check his/her company).
+So you can use the profiling option of GitDiscloser to get profile information about it and then see his/her firstname and the company where he/she work. (if company is not written in his/her github account, you can check his/her firstname on Linkedin to check it).
 
 Exemple:
 
@@ -86,12 +86,8 @@ Exemple:
 ```
 ## Some screens:
 
-![image](https://user-images.githubusercontent.com/40497633/171599615-d4ea31ac-a6bb-4d8d-9be7-0ef7a1e6ab33.png)
-![tempsnip](https://user-images.githubusercontent.com/40497633/171599909-f942bc64-7e95-4c89-8fcd-a190b79dd45b.png)
-![tempsnip](https://user-images.githubusercontent.com/40497633/171600194-a5504367-0d29-411e-9af2-c05a3fb4899a.png)
-![tempsnip](https://user-images.githubusercontent.com/40497633/171600770-77d167e8-b95f-4e4b-a234-bc65a4c50cbf.png)
-![tempsnip](https://user-images.githubusercontent.com/40497633/171601131-718194d0-2fbf-4eba-8aaf-7623ad8ad950.png)
-![image](https://user-images.githubusercontent.com/40497633/171602264-671fb8a0-8369-4e38-9c55-caca6ea2b96c.png)
+![image](https://user-images.githubusercontent.com/40497633/171843426-39d00404-c76d-4883-96e5-c0832f55b026.png)
+
 
 ## TO DO
 
