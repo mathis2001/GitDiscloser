@@ -12,7 +12,7 @@ $ python3 gitdiscloser.py
 ## Usage:
 ```bash
 Search: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-l limit] [-u] [-n]
-Profiling: ./gitdiscloser.py [-h] [-r repository link] [-p]
+Profiling: ./gitdiscloser.py [-h] [-r repository link |-p username]
 ```
 ## options:
 ```bash
@@ -26,8 +26,8 @@ Options
         -n   sort by the more recently indexed
         -l   limit (limit of results wanted)
   Profiling:
-        -r   repository link
-        -p   Github profile information
+        -r   profile information by repository link
+        -p   profile information by username
   ----------------------------------------------
   Config 
 
@@ -74,7 +74,7 @@ Possible secret(s) found in file:
 
 Check if mathis2001 work at target.com:
 
-./gitdiscloser -r https://raw.githubusercontent.com/mathis2001/code.xyz -p
+./gitdiscloser -r https://raw.githubusercontent.com/mathis2001/code.xyz or -p mathis2001
   
 If your target work at the target company, you can now check for (potentially other) information disclosure in his/her other codes thanks to the "user:" dork
 Exemple:
