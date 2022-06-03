@@ -67,6 +67,14 @@ def getopts(argv):
 		argv = argv[1:] 
 	return opts
 
+def gitsearch(input):
+	if '-n' in sys.argv:
+			query = "sort:indexed "+input
+	else:
+			query = input
+	result = token.search_code(query, order='desc')
+	return result
+
 def main():
 	myargs = getopts(argv)
 	if len(sys.argv) < 2:
@@ -121,13 +129,7 @@ def main():
 			''')
 			
 	elif '-s' in myargs:
-		
-		if '-n' in sys.argv:
-			query = "sort:indexed "+myargs['-s']
-		else:
-			query = myargs['-s']
-		result = token.search_code(query, order='desc')
-
+		result=gitsearch(myargs['-s'])
 		max_size = 100
 		print(f'Found {result.totalCount} file(s):')
 		
