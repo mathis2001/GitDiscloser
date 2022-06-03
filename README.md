@@ -13,6 +13,7 @@ $ python3 gitdiscloser.py
 ```bash
 Search: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-l limit] [-u] [-n] [-c]
 Profiling: ./gitdiscloser.py [-h] [-r repository link |-p username]
+Advanced: ./gitdiscloser.py [-h] [-a user/repository] [-f wordlist]
 ```
 ## options:
 ```bash
@@ -29,6 +30,9 @@ Options
   Profiling:
         -r   profile information by repository link
         -p   profile information by username
+  Advanced (commits scan):
+        -a   repository (mathis/GitDiscloser)
+        -f   find word matches in commits with a wordlist
   --------------------------------------------------------
   Config 
 
