@@ -36,7 +36,7 @@ Options
   --------------------------------------------------------
   Config 
 
-        Simply put your github token in the api.cfg file. 
+        Simply put your github token in your environment variables with the name 'GITHUB_TOKEN'. 
 
 ```
 ## Configuration:
