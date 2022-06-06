@@ -36,7 +36,7 @@ Options
   --------------------------------------------------------
   Config 
 
-        Simply put your github token in your environment variables with the name 'GITHUB_TOKEN'. 
+        Simply put your github token in your environment variables as 'GITHUB_TOKEN'. 
 
 ```
 ## Configuration:
