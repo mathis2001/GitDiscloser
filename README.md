@@ -88,7 +88,7 @@ Exemple:
 ```bash 
 ./gitdiscloser -s "user:<username>" -f <wordlist> -n
 ```
-To go deeper, GitDiscloser is able to check for secrets in commits.
+To go deeper, GitDiscloser is also able to check for secrets in commits.
 ```bash
 ./gitdiscloser -a mathis/GitDiscloser -f <wordlist>
 ```
