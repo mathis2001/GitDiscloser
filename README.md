@@ -90,7 +90,7 @@ Exemple:
 ```
 To go deeper, GitDiscloser is also able to check for secrets in commits.
 ```bash
-./gitdiscloser -a mathis/GitDiscloser -f <wordlist>
+./gitdiscloser -a mathis2001/GitDiscloser -f <wordlist>
 ```
 ## Some screens:
 
