@@ -9,6 +9,18 @@ $ cd GitDiscloser
 
 $ python3 gitdiscloser.py
 ```
+## Requirements:
+
+Python3
+
+Pip3
+
+Pygithub
+
+```bash
+pip3 install pygithub
+```
+
 ## Usage:
 ```bash
 Search: ./gitdiscloser.py [-h] [-s "github search"] [-f wordlist] [-l limit] [-u] [-n] [-c]
