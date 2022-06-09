@@ -7,7 +7,7 @@ import requests
 import re
 import os
 
-ACCESS_TOKEN = os.environ['GITHUB_TOKEN']
+ACCESS_TOKEN = os.getenv('GITHUB_TOKEN')
 
 token = Github(ACCESS_TOKEN)
 
