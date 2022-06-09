@@ -11,11 +11,11 @@ $ python3 gitdiscloser.py
 ```
 ## Requirements:
 
-Python3
+- Python3
 
-Pip3
+- Pip3
 
-Pygithub
+- Pygithub
 
 ```bash
 pip3 install pygithub
