@@ -18,7 +18,7 @@ $ python3 gitdiscloser.py
 - Pygithub
 
 ```bash
-pip3 install pygithub
+$ pip3 install pygithub
 ```
 
 ## Usage:
