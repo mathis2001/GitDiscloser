@@ -192,7 +192,6 @@ def main():
 	if not '-s' in myargs:
 		if not '-a' in myargs:
 			profiler()
-			print('test')
 		
 	if '-s' in myargs:
 		result=gitsearch(myargs['-s'])
