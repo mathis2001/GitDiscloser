@@ -62,7 +62,7 @@ Give a name to your token, select only the public_repo access and clic on "Gener
 ![image](https://user-images.githubusercontent.com/40497633/171192364-aa66b523-cb2f-40e4-bcf2-8b007a1ad682.png)
 
 
-You can now copy your token and paste it in the api.cfg file.
+You can now copy your token and paste it in your environment variables.
 
 ## Use case:
 
